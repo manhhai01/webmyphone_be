@@ -13,7 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class UserDTO {
-
     private long mataikhoan;
     private String email;
     private String password;

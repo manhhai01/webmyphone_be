@@ -198,6 +198,4 @@ public class UserService {
         u.setTrangthai(0);
         userRepository.save(u);
     }
-
-
 }

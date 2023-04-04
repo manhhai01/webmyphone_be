@@ -1,7 +1,16 @@
 package com.project.webmyphone.webmyphone.security;
 
 import com.project.webmyphone.webmyphone.dto.UserDTO;
+import com.project.webmyphone.webmyphone.service.JwtService;
 import com.project.webmyphone.webmyphone.service.UserService;
+import java.io.IOException;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,17 +19,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-
-public class JwtAuthorizationFilter extends UsernamePasswordAuthenticationFilter {
-
-    private final static String Token_header = "authorization";
+@Component
+public class JwtAuthorizationFilter extends
+        UsernamePasswordAuthenticationFilter {
+    private final static String Token_header = "Authorization";
 
     @Autowired
     JwtService jwtService;

@@ -1,4 +1,9 @@
-package com.project.webmyphone.webmyphone.security;
+package com.project.webmyphone.webmyphone.service;
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
@@ -8,14 +13,9 @@ import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
-import java.util.Date;
 
 @Service
 public class JwtService {
-
     @Value("${jwt_secret_staff}")
     public String staff_key;
 
@@ -23,11 +23,10 @@ public class JwtService {
     public String user_key;
 
     @Value("${jwt_expire_time_staff}")
-    public String expire_time_staff;
+    public long expire_time_staff;
 
     @Value("${jwt_expire_time_user}")
-    public String expire_time_user;
-
+    public long expire_time_user;
 
     public String createTokenAdminStaff(String email) {
         String token = null;

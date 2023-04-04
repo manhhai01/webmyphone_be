@@ -12,11 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
-
     @Override
-    public void handle(HttpServletRequest request, HttpServletResponse response,
-                       AccessDeniedException exc)
-            throws IOException, ServletException {
+    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
         Map<String, Object> map = new HashMap<>();
         map.put("success", "false");
         map.put("message", "Tài khoản không có đủ quyền truy cập");
@@ -29,5 +26,4 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
         response.setContentType("application/json");
         response.getWriter().write(jsonString);
     }
-
 }

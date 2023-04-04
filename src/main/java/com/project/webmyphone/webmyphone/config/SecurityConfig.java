@@ -2,8 +2,8 @@ package com.project.webmyphone.webmyphone.config;
 
 import com.project.webmyphone.webmyphone.security.CustomAccessDeniedHandler;
 import com.project.webmyphone.webmyphone.security.JwtAuthorizationFilter;
-import com.project.webmyphone.webmyphone.security.JwtService;
 import com.project.webmyphone.webmyphone.security.RestAuthenticationEntryPoint;
+import com.project.webmyphone.webmyphone.service.JwtService;
 import com.project.webmyphone.webmyphone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,13 +13,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
-
     @Autowired
     JwtService jwtService;
 
